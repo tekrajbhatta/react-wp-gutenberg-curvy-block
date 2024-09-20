@@ -22,6 +22,6 @@
 
 /* eslint-disable no-console */
 console.log(
-	'Hello World! (from create-block-react-wp-gutenberg-curvy-block block)'
+	'Hello World! (from create-block-blockylicious block)'
 );
 /* eslint-enable no-console */

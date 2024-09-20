@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
-/*!*********************!*\
-  !*** ./src/view.js ***!
-  \*********************/
+/*!**********************************!*\
+  !*** ./src/blocks/curvy/view.js ***!
+  \**********************************/
 /**
  * Use this file for JavaScript code that you want to run in the front-end
  * on posts/pages that contain this block.
@@ -25,7 +25,7 @@
  */
 
 /* eslint-disable no-console */
-console.log('Hello World! (from create-block-react-wp-gutenberg-curvy-block block)');
+console.log('Hello World! (from create-block-blockylicious block)');
 /* eslint-enable no-console */
 /******/ })()
 ;
