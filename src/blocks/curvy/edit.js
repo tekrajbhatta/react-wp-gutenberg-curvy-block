@@ -17,6 +17,8 @@ import { Panel, PanelBody, PanelRow, ToggleControl } from '@wordpress/components
 
 // import { more } from '@wordpress/icons';
 
+import { useState } from 'react';
+
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -37,6 +39,9 @@ import './editor.scss';
 import metadata from './block.json';
 
 export default function Edit() {
+
+	const [ hasFixedBackground, setHasFixedBackground ] = useState( false );
+
 	return (
 		<>
 			
@@ -52,6 +57,24 @@ export default function Edit() {
 						<div style={{display: 'flex'}}>
 							<ToggleControl 
 								label={__("Enable top curve", metadata.textdomain)}
+								onChange={ (e) => {
+									console.log('New avlaue is1111: ', e);
+								} }
+								checked={true}
+							/>
+							<ToggleControl
+								__nextHasNoMarginBottom
+								label="Fixed Background"
+								help={
+									hasFixedBackground
+										? 'Has fixed background.'
+										: 'No fixed background.'
+								}
+								checked={ hasFixedBackground }
+								onChange={ (newValue) => {
+									console.log('New avlaue is: ', newValue);
+									setHasFixedBackground( newValue );
+								} }
 							/>
 						</div>
 					</PanelBody>
