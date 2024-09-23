@@ -38,65 +38,35 @@ import './editor.scss';
 
 import metadata from './block.json';
 
-export default function Edit() {
+import { Curve } from './components/curve.js';
+ 
+export default function Edit(props) {
 
-	const [ hasFixedBackground, setHasFixedBackground ] = useState( false );
+	console.log("Props values is: ", props);
+
+	const {className, ...blockProps} = useBlockProps();
 
 	return (
 		<>
-			
-			<p { ...useBlockProps() }>
-				{ __(
-					'React Wp Gutenberg Curvy Block – hello from the editor!',
-					metadata.textdomain
-				) }
-			</p>
+			<section className={`${className} alignfull`} {...blockProps}>
+			{props.attributes.enableTopCurve &&
+				<Curve />
+			}
+			</section>
 			<InspectorControls>
 				<Panel header={__("Custom Settings")}>
 					<PanelBody title={__("Top Curve", metadata.textdomain)} initialOpen={true}>
 						<div style={{display: 'flex'}}>
 							<ToggleControl 
 								label={__("Enable top curve", metadata.textdomain)}
-								onChange={ (e) => {
-									console.log('New avlaue is1111: ', e);
+								onChange={ (isChecked) => {
+									props.setAttributes({
+										enableTopCurve: isChecked
+									})
 								} }
-								checked={true}
-							/>
-							<ToggleControl
-								__nextHasNoMarginBottom
-								label="Fixed Background"
-								help={
-									hasFixedBackground
-										? 'Has fixed background.'
-										: 'No fixed background.'
-								}
-								checked={ hasFixedBackground }
-								onChange={ (newValue) => {
-									console.log('New avlaue is: ', newValue);
-									setHasFixedBackground( newValue );
-								} }
+								checked={props.attributes.enableTopCurve}
 							/>
 						</div>
-					</PanelBody>
-
-					<PanelBody title="My Block Settings1" initialOpen={false}>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-					</PanelBody>
-				</Panel>
-
-				<Panel header="My Panel1">
-					<PanelBody title="My Block Settings" initialOpen={false}>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-					</PanelBody>
-
-					<PanelBody title="My Block Settings1" initialOpen={false}>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
-						<PanelRow>My Panel Inputs and Labels</PanelRow>
 					</PanelBody>
 				</Panel>
 			</InspectorControls>
