@@ -45,6 +45,7 @@ export default function Edit(props) {
 	console.log("Props values is: ", props);
 
 	const {className, ...blockProps} = useBlockProps();
+	console.log('classname is:', {className});
 
 	return (
 		<>
